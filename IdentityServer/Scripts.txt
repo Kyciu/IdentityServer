@@ -1,0 +1,15 @@
+dotnet tool install --global dotnet-ef
+
+dotnet ef migrations add InitialIdentityServerMigration -c IdentityAppDbContext
+
+dotnet ef migrations add InitialIdentityServerMigration -c PersistedGrantDbContext
+
+dotnet ef migrations add InitialIdentityServerMigration -c ConfigurationDbContext
+
+dotnet ef database update -c IdentityAppDbContext
+
+dotnet ef database update -c PersistedGrantDbContext
+
+dotnet ef database update -c ConfigurationDbContext
+
+dotnet run bin/Debug/net6.0/IdentityServer /seed
